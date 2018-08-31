@@ -1,0 +1,31 @@
+<div class="container" ng-controller="JobController"
+	class="table-responsive">
+	<br /> <font color="white" face="san serif ms">
+		<h1>Welcome to {{singleJobData.company}}</h1> <br />
+
+					<form id="jobform" method="post">
+<h3>List of Jobs</h3>
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>JobID</th>
+									<th>Company</th>
+									<th>Job Designation</th>
+									<th>Job Description</th>
+									<th>Location</th>
+									<th>Salary</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr> <!-- ng-repeat="job in singleJobData" --> 
+									<td>{{singleJobData.jobId}}</td>
+									<td>{{singleJobData.company}}</td>
+									<td>{{singleJobData.jobDesignation}}</td>
+									<td>{{singleJobData.jobDescription}}</td>									
+									<td>{{singleJobData.location}}</td>
+									<td>{{singleJobData.salary}}</td>
+									
+								</tr>
+							</tbody>
+						</table>
+					</form>

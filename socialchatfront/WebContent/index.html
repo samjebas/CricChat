@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Cric Chat</title>
+<script src="js/angular.js"></script>
+<script type="text/javascript" src="js/angular-route.js"></script>
+<script src="js/MyRouteConfig.js"></script>
+<script src="C_Blog/BlogController.js"></script>
+<script src="C_User/UserController.js"></script>
+<script src="C_Chat/ChatController.js"></script>
+<script src="C_Chat/ChatService.js"></script>
+<script src="C_Forum/ForumController.js"></script>
+<script src="C_Friend/FriendController.js"></script>
+<script src="C_Job/JobController.js"></script>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- icon library -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- JQuery Js -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Bootstrap Js -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-cookies.js"></script>
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- LoadAsh Stomp and sockJs -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.3/lodash.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.1/sockjs.js"></script>
+
+<style>
+item {
+	height: 100%;
+	width: 100%;
+}
+
+footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: black;
+	color: white;
+	text-align: center;
+}
+
+#img1 {
+	border-radius: 50%;
+}
+
+body {
+	background-image: url("back2.jpg");
+	font-size: 18px;
+	color: white;
+}
+
+.navbar-default {
+	background-color: #69899f;
+	border-color: #425766;
+}
+
+.navbar-default .navbar-brand {
+	color: #d7e2e9;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus
+	{
+	color: #e5dbdb;
+}
+
+.navbar-default .navbar-text {
+	color: #d7e2e9;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: #d7e2e9;
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus
+	{
+	color: #e5dbdb;
+}
+
+.navbar-default .navbar-nav>li>.dropdown-menu {
+	background-color: #69899f;
+}
+
+.navbar-default .navbar-nav>li>.dropdown-menu>li>a {
+	color: #d7e2e9;
+}
+
+.navbar-default .navbar-nav>li>.dropdown-menu>li>a:hover,
+	.navbar-default .navbar-nav>li>.dropdown-menu>li>a:focus {
+	color: #e5dbdb;
+	background-color: #425766;
+}
+
+.navbar-default .navbar-nav>li>.dropdown-menu>li>.divider {
+	background-color: #69899f;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover,
+	.navbar-default .navbar-nav>.active>a:focus {
+	color: #e5dbdb;
+	background-color: #425766;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover,
+	.navbar-default .navbar-nav>.open>a:focus {
+	color: #e5dbdb;
+	background-color: #425766;
+}
+
+.navbar-default .navbar-toggle {
+	border-color: #425766;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus
+	{
+	background-color: #425766;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+	background-color: #d7e2e9;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+	border-color: #d7e2e9;
+}
+
+.navbar-default .navbar-link {
+	color: #d7e2e9;
+}
+
+.navbar-default .navbar-link:hover {
+	color: #e5dbdb;
+}
+
+@media ( max-width : 767px) {
+	.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+		color: #d7e2e9;
+	}
+	.navbar-default .navbar-nav .open .dropdown-menu>li>a:hover,
+		.navbar-default .navbar-nav .open .dropdown-menu>li>a:focus {
+		color: #e5dbdb;
+	}
+	.navbar-default .navbar-nav .open .dropdown-menu>.active>a,
+		.navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover,
+		.navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus {
+		color: #e5dbdb;
+		background-color: #425766;
+	}
+}
+</style>
+
+</head>
+<body ng-app="myApp">
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<nav class="navbar navbar-default" role="navigation">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse"
+							data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span><span
+								class="icon-bar"></span><span class="icon-bar"></span><span
+								class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#!">Cric Chat</a>
+					</div>
+
+					<div class="collapse navbar-collapse"
+						id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="#!"><i class="fa fa-home"></i>Home</a></li>
+
+							<!-- Blogs -->
+							<li class="dropdown"
+								ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'"><a
+								class="dropdown-toggle" data-toggle="dropdown" href="">Blogs<span
+									class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#!Blog">Create Blog</a></li>
+									<li><a href="#!ViewBlog">view Blogs</a></li>
+									<li><a href="#!updateBlog">Manage Blogs</a></li>
+								</ul></li>
+							<!-- Blogs END -->
+
+							<!-- Forum -->
+							<li class="dropdown"
+								ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'"><a
+								class="dropdown-toggle" data-toggle="dropdown" href="">Forum<span
+									class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#!createForum">Create forum</a></li>
+									<li><a href="#!ViewForums">View Forums</a></li>
+									<li><a href="#!updateForum">Manage Forum</a></li>
+								</ul></li>
+							<!-- Forum END -->
+
+							<!-- Friend  -->
+							<li class="dropdown" ng-show="currentUser.role=='ROLE_USER'"><a
+								class="dropdown-toggle" data-toggle="dropdown" href="">Friends<span
+									class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#!myAccFrnds">Friends</a></li>
+									<li><a href="#!suggestedFriends"><i
+											class="glyphicon glyphicon-user"></i>Suggested Friends</a></li>
+									<li><a href="#!frndReqRcvd">Pending Friend
+											Requests</a></li>
+								</ul></li>
+							<!-- Friend END -->
+							
+							<!-- Jobs -->
+							<li class="dropdown"
+								ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'"><a
+								class="dropdown-toggle" data-toggle="dropdown" href="">Jobs<span
+									class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li ng-show="currentUser.role=='ROLE_ADMIN'"><a href="#!Job">Create new job opportunity</a></li>
+									<li><a href="#!ViewJobs">View Jobs</a></li>
+									<li><a href="#!AppliedJobs">Applied Jobs</a></li>
+									<li><a href="#!ManageBlog">Manage Jobs</a></li>
+								</ul></li>
+							<!-- Blogs END -->
+							
+							<!-- Profile dropdown -->
+							<li class="dropdown"
+								ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'">
+								<a class="dropdown-toggle" data-toggle="dropdown" href=""><i
+									class="glyphicon glyphicon-user"></i>Profile</a>
+								<ul class="dropdown-menu">
+								<li	ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'">
+										<a href="#!UpdateProfileDetails"><i
+											class="glyphicon glyphicon-user"></i>Update Profile details</a>
+
+									</li>
+									<li
+										ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'">
+										<a href="#!UpdateProfilePicture"><i
+											class="glyphicon glyphicon-user"></i>UpdateProfile Picture</a>
+
+									</li>
+									<li
+										ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'">
+										<a href="#!ViewProfile"><i
+											class="glyphicon glyphicon-user"></i>ViewProfile</a>
+									</li>
+									<!-- <li ng-show="currentUser.role=='ROLE_USER'"><a
+										href="#!userRequests"><i class="glyphicon glyphicon-user"></i>UserRequests</a></li> -->
+								</ul>
+							</li>
+							<!-- Profile dropdown -->
+							<li ng-show="currentUser.role=='ROLE_USER'"><a href="#!Chat">Chat</a>
+							</li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li
+								ng-hide="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'">
+								<a href="#!Login"><i class="glyphicon glyphicon-log-in"></i>
+									Login</a>
+							</li>
+							<li
+								ng-hide="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'"><a
+								href="#!Register"><i class="glyphicon glyphicon-user"></i>Register</a></li>
+							<li
+								ng-hide="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'"><a
+								href="#!AboutUs">AboutUs</a></li>
+							<!-- Button trigger modal -->
+
+							<li
+								ng-hide="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'"><a
+								href="#!ContactUs">ContactUs</a></li>
+
+						</ul>
+
+						<div class="nav navbar-nav navbar-right"
+							ng-hide="currentUser==undefined" ng-controller="UserController">
+							<ul class="nav navbar-nav">
+
+								<li><a class="dropdown-toggle" data-toggle="dropdown"
+									href=""> <font color="black">{{currentUser.loginName}}</font></a>
+									<ul class="dropdown-menu">
+										<li align="center"><button value="LogOut"
+												ng-click="logout()" class="btn btn-default">
+												<i class="glyphicon glyphicon-log-out"></i>LogOut
+											</button></li>
+									</ul></li>
+								<li><img id="img1"
+									src="http://localhost:8078/socialchatmiddle/getImage/{{currentUser.loginName}}"
+									alt="avatar" onerror=this.src="avatar.png" style="height: 50px; width: 60px"></li>
+
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+
+
+		<div ng-view></div>
+	</div>
+	<footer>
+		<div id="footer">
+			<div class="container">
+				<div class="bottom-bar">
+					Copyright &copy; CricChat <a href="https://www.facebook.com/">
+						<i style="font-size: 24px" class="fa">&#xf082; </i>
+					</a> <a href="https://twitter.com/login"> <i
+						style="font-size: 24px" class="fa">&#xf099;</i></a> <a
+						href="https://plus.google.com/"> <i style="font-size: 24px"
+						class="fa">&#xf0d5;</i>
+					</a> All Rights Reserved © 2018 | <a href="#!AboutUs">About Us</a> | <a
+						href="#!ContactUs">Contact US</a>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</body>
+</html>

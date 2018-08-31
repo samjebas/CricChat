@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Register</title>
+<style type="text/css">
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+
+*:focus {
+	outline: none;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	color: #222;
+	font-family: COTILLIO, sans-serif;
+	font-weight: 300;
+}
+
+#signin-box {
+	position: relative;
+	margin: 4% auto;
+	width: 500px;
+	height: 600px;
+	background: #F8F8FF	;
+	border-radius: 2px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.left {
+	position: absolute;
+	top: 0;
+	left: 0;
+	box-sizing: border-box;
+	padding: 40px;
+	width: 500px;
+	height: 600px;
+}
+
+h1 {
+	margin: 0 0 20px 0;
+	font-weight: 300;
+	font-size: 28px;
+	font-color: 'lightblue'
+}
+
+input[type="text"], input[type="password"] {
+	display: block;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+	padding: 4px;
+	width: 220px;
+	height: 32px;
+	border: 2px solid #16a085;
+	border-bottom: 1px solid #AAA;
+	font-family: COTILLIO, sans-serif;
+	font-weight: 400;
+	font-size: 15px;
+	transition: 0.2s ease;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+	border-bottom: 2px solid #16a085;
+	color: #16a085;
+	transition: 0.2s ease;
+}
+
+input[type="submit"] {
+	margin-top: 28px;
+	width: 120px;
+	height: 32px;
+	background: #16a085;
+	border: none;
+	border-radius: 2px;
+	color: #FFF;
+	font-family: 'COTILLIO', sans-serif;
+	font-weight: 500;
+	text-transform: uppercase;
+	transition: 0.1s ease;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover, input[type="submit"]:focus {
+	opacity: 0.8;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+	transition: 0.1s ease;
+}
+
+#address {
+	display: block;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+	padding: 4px;
+	width: 220px;
+	height: 50px;
+	border: 2px solid #16a085;
+	border-bottom: 1px solid #AAA;
+	font-family: COTILLIO, sans-serif;
+	font-weight: 400;
+	font-size: 15px;
+	transition: 0.2s ease;
+}
+
+input[type="submit"]:active {
+	opacity: 1;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+	transition: 0.1s ease;
+}
+
+.or {
+	position: absolute;
+	top: 180px;
+	left: 280px;
+	width: 40px;
+	height: 40px;
+	background: #DDD;
+	border-radius: 50%;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+	line-height: 40px;
+	text-align: center;
+}
+
+.right {
+	position: absolute;
+	top: 0;
+	right: 0;
+	box-sizing: border-box;
+	padding: 40px;
+	width: 400px;
+	height: 400px;
+	background: url('https://goo.gl/YbktSj');
+	background-size: cover;
+	background-position: center;
+	border-radius: 0 2px 2px 0;
+}
+
+.right .loginwith {
+	display: block;
+	margin-bottom: 40px;
+	font-size: 28px;
+	color: #FFF;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<div id="signin-box">
+		<div class="left" align="center" ng-controller="UserController">
+			<font color="blue" face="san serif ms"><h1 align="center">
+					<b>Sign up</b>
+				</h1>
+				<table>
+					<tr>
+						<td><label class="col-md-4 " for="LoginName">LoginName</label>
+						</td>
+						<td><input id="loginName" name="loginName" type="text"
+							placeholder="Enter loginname here" ng-model="user.loginName"
+							class="form-control input-md"></td>
+					</tr>
+
+					<tr>
+						<td><label class="col-md-4 control-label" for="userName">UserName</label></td>
+						<td><input id="userName" name="userName"
+							ng-model="user.userName" type="text"
+							placeholder="Enter your username here"
+							class="form-control input-md"></td>
+					</tr>
+					<tr>
+						<td><label class="col-md-4 control-label" for="emailId">EmailId</label></td>
+						<td><input id="emailId" name="emailId" type="text"
+							placeholder="Enter emailId here" ng-model="user.emailId"
+							class="form-control input-md"></td>
+					</tr>
+					<tr>
+						<td><label class="col-md-4 control-label" for="address">Address</label></td>
+						<td><textarea class="form-control" id="address"
+								placeholder="Address here" ng-model="user.address"
+								name="address"></textarea></td>
+					</tr>
+					<tr>
+						<td><label class="col-md-4 control-label" for="mobileNo">MobileNo</label></td>
+						<td><input id="mobileNo" name="mobileNo" type="text"
+							placeholder="Enter the mobileNo" ng-model="user.mobileNo"
+							class="form-control input-md"></td>
+					</tr>
+					<tr>
+						<td><label class="col-md-4 control-label" for="password">Password</label>
+						</td>
+						<td><input id="password" name="password" autocomplete="on"
+							type="password" placeholder="enter password here"
+							ng-model="user.password" class="form-control input-md"></td>
+					</tr>
+					<tr align="center">
+						<td align="center"><button id="Register" name="Register"
+								ng-click="register()" class="btn btn-primary">Register</button></td>
+					</tr>
+				</table> </font>
+		</div>
+	</div>
+
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/scripts.js"></script>
+	<script src="/UserController.js"></script>
+</body>
+</html>
+
+
+
+

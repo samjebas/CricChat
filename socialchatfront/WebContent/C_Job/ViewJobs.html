@@ -1,0 +1,39 @@
+
+<div class="container" ng-controller="JobController"
+	class="table-responsive" data-ng-init="fetchAllJobs">
+
+	<br /> <font color="white" face="san serif ms">
+		<h1>List of All Jobs</h1> <br />
+
+	</font> <font color="#0000A0" face="san serif ms">
+
+		<div class="list-group">
+
+			<div class="list-group-item" ng-repeat="job in jobData">
+
+				<h3 class="list-group-item-heading" style="color: #0000A0">
+
+					{{job.company}}</h3>
+
+				<p class="list-group-item-text">{{job.role}}</p>
+				<div align="right">
+					<button class="btn btn-info" ng-click="editJob(job.jobId)">
+						<i class="fa fa-edit"></i>
+					</button>
+					<button class="btn"  ng-show="currentUser.role=='ROLE_ADMIN'" ng-click="deleteJob(job.jobId)">
+						<i class="fa fa-trash"></i>
+					</button>
+				</div>
+
+				
+
+				<button class="btn btn-right" ng-click="viewJob(job.jobId)">
+					View Job</button>
+
+
+
+			</div>
+
+		</div>
+	</font>
+</div>

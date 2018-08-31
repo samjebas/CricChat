@@ -1,0 +1,87 @@
+<!DOCTYPE div PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet" type="text/css"
+	href="http://fonts.googleapis.com/css?family=vertigo">
+<style type="text/css">
+body {
+	font-family: 'vertigo';
+	font-size: 18px;
+	color: white;
+}
+</style>
+</head>
+<body>
+	<div class="row" ng-controller="FriendController">
+
+		<div style="margin-top: 30px; margin-left: 30px;">
+			<font face="times new roman"><h4 align="center">Suggested
+					Friends</h4></font>
+		</div>
+		<br />
+		<hr />
+		<!-- <div style="margin-left: 25px; margin-bottom: 250px;">
+			<table class="highlight centered responsive-table" border="2">
+
+				<thead>
+					<tr>
+						<th data-field="username">Username</th>
+						<th data-field="firstname">Login Name</th>
+						<th data-field="email">Email Id</th>
+						<th data-field="phone">Contact No</th>
+						<th data-field="Actions">Actions</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr ng-repeat="user in suggestedFriends">
+						<td>{{user.loginName}}</td>
+						<td>{{user.userName}}</td>
+						<td>{{user.emailId}}</td>
+						<td>{{user.mobileNo}}</td>
+						<td>
+							<button class="btn btn-primary" ng-click="sendFriendRequest()">
+								<i class="fa fa-edit">Add Friend</i>
+							</button> <button class="btn" ng-click="">
+								<i class="fa fa-trash">Reject</i>
+							</button>
+						</td>
+					</tr>
+				</tbody>
+
+			</table>
+		</div> -->
+		<div class="media" style="margin-left: 10px; margin-bottom: 300px;">
+
+			<div class="media-body" ng-repeat="user in suggestedFriends"
+				class="jumbotron" style="color: white;">
+
+				<h5 class="mt-0">{{user.loginName}}</h5>
+				{{user.userName}}
+				<div class="media mt-3">
+					<a class="pr-3" href="#"><img
+						alt="Bootstrap Media Another Preview"
+						src="http://localhost:8078/socialchatmiddle/getImage/{{user.loginName}}"
+						onerror=this.src="avatar.png"  style="border-radius: 50%; height: 90px; width: 90px" /></a>
+					<div class="media-body">
+						<h5 class="mt-0">{{user.emailId}}</h5>
+						{{user.mobileNo}}
+
+						<div class="row">
+							<div class="col-sm-6">
+								<button class="btn btn-primary" ng-click="sendFriendRequest()">
+									<i class="fa fa-send">Add Friend</i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+
+</body>
+</html>

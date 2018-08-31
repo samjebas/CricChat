@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Blog</title>
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+	rel="stylesheet">
+<script src="../js/MyRouteConfig.js"></script>
+<style>
+.btn {
+	background-color: DodgerBlue;
+	border: none;
+	color: white;
+	padding: 12px 16px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	color: #222;
+	font-family: COTILLIO, sans-serif;
+	font-weight: 300;
+}
+
+#blog-box {
+	position: relative;
+	margin: 5% auto;
+	width: 950px;
+	height: 900px;
+	border-radius: 2px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+	background-color: Black;
+}
+</style>
+</head>
+<body ng-app="myApp">
+	<font color="white" face="verdana">
+		<div id="blog-box" class="container-fluid"
+			ng-controller="BlogController">
+			<div class="row">
+				<div class="col-md-12">
+					<div>
+						<h1 align="center">
+							<font face="Edwardian Script ITC">Create your blogs here!</font>
+							</h2>
+					</div>
+
+					<form role="form" method="post">
+						<div class="form-group">
+							<label for="blogName"> Blog Name </label> <input type="text"
+								placeholder="Blog Name" name="blogName" ng-model="blog.blogName"
+								class="form-control input-lg" id="blogName">
+						</div>
+						<div class="form-group">
+
+							<label for="blogContent"> Blog Content </label>
+							<textarea rows="6" cols="24" class="form-control input-lg"
+								id="blogContent" placeholder="Blog Content" name="blogContent"
+								ng-model="blog.blogContent"></textarea>
+
+						</div>
+						<button type="submit" class="btn btn-primary" value="Insert Blog"
+							on-click="{{message}}" ng-Click="insertBlog()">Submit</button>
+						<input type="reset" class="btn btn-lg btn-default" value="Reset">
+					</form>
+					<form id="blogform" method="post">
+
+
+						<h3>List of Created Blogs</h3>
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>BlogID</th>
+									<th>BlogName</th>
+									<th>BlogContent</th>
+									<!-- <th>Blog Created Date</th>	 -->
+									<th>Status</th>
+									<th>Likes</th>
+									<!-- <th>Action</th> -->
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="blog in blogData" >
+									<td>{{blog.blogId}}</td>
+									<td>{{blog.blogName}}</td>
+									<td>{{blog.blogContent}}</td>
+									<!-- <td>{{blog.createdDate}}</td> -->
+									<td>{{blog.status}}</td>
+									<td>{{blog.likes}}
+										<button class="btn" value="LIKES"
+											ng-click="incrementLike(blog.blogId)">
+											<i class="glyphicon glyphicon-thumbs-up"></i>
+										</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
+					<!-- <div class="jumbotron">
+						<h2></h2>
+					</div> -->
+				</div>
+			</div>
+		</div>
+	</font>
+	<script src="../js/jquery.min.js"></script>
+	<script src="/BlogController.js"></script>
+	<script src="../C_User/UserController.js"></script>
+	<script
+		src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-cookies.js"></script>
+</body>
+</html>

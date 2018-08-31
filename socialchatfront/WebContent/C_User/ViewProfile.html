@@ -1,0 +1,223 @@
+<html>
+<style>
+/* USER PROFILE PAGE */
+.card {
+	align: "center";
+	margin-top: 50px;
+	padding: 50px;
+	background-color: rgba(214, 224, 226, 0.2);
+	-webkit-border-top-left-radius: 5px;
+	-moz-border-top-left-radius: 5px;
+	border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-top-right-radius: 5px;
+	border-top-right-radius: 5px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin-top: 50px;
+}
+
+.card.hovercard {
+	position: relative;
+	padding-top: 0;
+	overflow: hidden;
+	text-align: center;
+	background-color: #fff;
+	background-color: rgba(255, 255, 255, 1);
+}
+
+#profile-box {
+	position: relative;
+	margin: 5% auto;
+	margin-left: 10%;
+	width: 950px;
+	height: 700px;
+	border-radius: 2px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+	width: 950px;
+}
+
+.card.hovercard .card-background {
+	height: 130px;
+}
+
+.card-background img {
+	-webkit-filter: blur(25px);
+	-moz-filter: blur(25px);
+	-o-filter: blur(25px);
+	-ms-filter: blur(25px);
+	filter: blur(25px);
+	margin-left: -100px;
+	margin-top: -200px;
+	min-width: 130%;
+}
+
+.card.hovercard .useravatar {
+	position: absolute;
+	top: 15px;
+	left: 0;
+	right: 0;
+}
+
+.card.hovercard .useravatar img {
+	width: 100px;
+	height: 100px;
+	max-width: 100px;
+	max-height: 100px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	border: 5px solid rgba(255, 255, 255, 0.5);
+}
+
+.card.hovercard .card-info {
+	position: absolute;
+	bottom: 14px;
+	left: 0;
+	right: 0;
+}
+
+.card.hovercard .card-info .card-title {
+	padding: 0 5px;
+	font-size: 20px;
+	line-height: 1;
+	color: #262626;
+	background-color: rgba(255, 255, 255, 0.1);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.card.hovercard .card-info {
+	overflow: hidden;
+	font-size: 12px;
+	line-height: 20px;
+	color: #737373;
+	text-overflow: ellipsis;
+}
+
+.card.hovercard .bottom {
+	padding: 0 20px;
+	margin-bottom: 17px;
+}
+
+.btn-pref .btn {
+	-webkit-border-radius: 0 !important;
+}
+</style>
+
+
+<!-- 
+<font face="san serif ms" color="yellow">
+	<div class="container" ng-controller="UserController"
+		data-ng-init="fetchUserDetails()">
+
+		<h1 style="text-decoration: underline;">Profile</h1>
+
+		<br /> <br /> <br />
+
+		<table class="table table-responsive"
+			style="margin-bottom: 50px; align: center; border: 1px solid black">
+
+			<tbody>
+				<tr>
+					<td colspan="2">
+						<center>
+							<img id="img1"
+								src="http://localhost:8078/socialchatmiddle/getImage/{{currentUser.loginName}}"
+								style="height: 120px; width: 150px; border-radius: 25px;">
+						</center>
+					</td>
+				</tr>
+				<tr>
+					<td>User Name :</td>
+					<td>{{user.userName}}</td>
+				</tr>
+				<tr>
+					<td>Mobile Number :</td>
+					<td>{{user.mobileNo}}</td>
+				</tr>
+				<tr>
+					<td>Email :</td>
+					<td>{{user.emailId}}</td>
+				</tr>
+				<tr>
+					<td>LoginName :</td>
+					<td>{{user.loginName}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</font> -->
+
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<body align="center">
+	<div id="profile-box" class="col-lg-6 col-sm-6"
+		ng-controller="UserController" data-ng-init="fetchUserDetails()">
+		<h2 align="center">
+			<font face="Monotype Corsiva" color="white">Profile</font>
+		</h2>
+		<div class="card hovercard">
+			<div class="card-background">
+				<img class="card-bkimg" alt=""
+					src="http://localhost:8078/socialchatmiddle/getImage/{{currentUser.loginName}}" onerror=this.src="avatar.png"  style="height: 50px; width: 60px">
+				<!-- http://lorempixel.com/850/280/people/9/ -->
+			</div>
+			<div class="useravatar">
+				<img alt="avatar"
+					src="http://localhost:8078/socialchatmiddle/getImage/{{currentUser.loginName}}" onerror=this.src="avatar.png"  style="height: 50px; width: 60px">
+			</div>
+			<div class="card-info">
+				<span class="card-title" style="color: darkblue">{{user.userName}}</span>
+
+			</div>
+		</div>
+
+
+		<div class="well">
+			<table class="table table-responsive"
+				style="margin-bottom: 50px; align: center; border: 1px solid black">
+
+				<tbody>
+					<tr>
+						<td>Mobile Number :</td>
+						<td>{{user.mobileNo}}</td>
+					</tr>
+					<tr>
+						<td>Email :</td>
+						<td>{{user.emailId}}</td>
+					</tr>
+					<tr>
+						<td>LoginName :</td>
+						<td>{{user.loginName}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+
+
+	<script>
+		$(document).ready(
+				function() {
+					$(".btn-pref .btn").click(
+							function() {
+								$(".btn-pref .btn").removeClass("btn-primary")
+										.addClass("btn-default");
+								// $(".tab").addClass("active"); // instead of this do the below 
+								$(this).removeClass("btn-default").addClass(
+										"btn-primary");
+							});
+				});
+	</script>
+</body>
+
+</html>

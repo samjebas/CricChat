@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Update Blog</title>
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+	rel="stylesheet">
+<script src="../js/MyRouteConfig.js"></script>
+<script src="../C_Blog/BlogController.js"></script>
+<script src="../js/jquery.min.js"></script>
+<style>
+.btn {
+	background-color: DodgerBlue;
+	border: 1px;
+	color: white;
+	padding: 12px 14px;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+	background-color: Black;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	color: #222;
+	font-family: COTILLIO, sans-serif;
+	font-weight: 300;
+}
+
+#blog-box {
+	position: relative;
+	margin: 5% auto;
+	width: 1100px;
+	height: 1000px;
+	border-radius: 2px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+</style>
+</head>
+
+<body ng-app="myApp">
+	<font color="white" face="verdana">
+		<div id="blog-box" class="row" ng-controller="BlogController">
+			<div>
+				<font color="white" face="Edwardian Script ITC">
+					<h1 class="text-center">Update Blog</h1>
+				</font>
+			</div>
+			<form class="col-md-12 center-block" id="blogForm" method="POST">
+				<div class="form-group">
+					<input type="text" class="form-control input-lg" name="blogName"
+						placeholder="Blog name" ng-model="blog.blogName" /><font
+						face="Forte"></font>
+				</div>
+				<div class="form-group">
+					<textarea class="form-control input-lg" rows="3" name="blogContent"
+						placeholder="Blog content" ng-model="blog.blogContent"></textarea>
+				</div>
+				<div class=form-group>
+					<input type="submit" class="btn btn-lg btn-primary"
+						value="Update Blog" ng-click="updateBlog(blog.blogId)"> <input
+						type="reset" class="btn btn-lg btn-default" value="Reset">
+				</div>
+			</form>
+			<form id="blogform" method="post">
+				<h3>
+					List of Created Blogs
+					<h4 align="right">
+						<button class="btn" ng-click="fetchAllBlogs()">
+							<i class="glyphicon glyphicon-refresh"></i>
+						</button>
+					</h4>
+				</h3>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>BlogId</th>
+							<th>BlogName</th>
+							<th>BlogContent</th>
+							<th>Status</th>
+							<th>Likes</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="blog in blogData">
+							<td>{{blog.blogId}}</td>
+							<td>{{blog.blogName}}</td>
+							<td>{{blog.blogContent}}</td>
+							<td>{{blog.status}}</td>
+							<td>{{blog.likes}} <t>
+								<button class="btn" value="LIKES"
+									ng-click="incrementLike(blog.blogId)">
+									<i class="glyphicon glyphicon-thumbs-up"></i>
+								</button></td>
+							<td>
+								<button class="btn btn-primary"
+									ng-hide="currentUser.loginName!=blog.loginName"
+									ng-click="editBlog(blog.blogId)">
+									<i class="fa fa-edit"></i>
+								</button>
+								<button class="btn" ng-show="currentUser.role=='ROLE_ADMIN'"
+									ng-click="deleteBlog(blog.blogId)">
+									<i class="fa fa-trash"></i>
+								</button>
+								<button class="btn" ng-show="currentUser.role=='ROLE_ADMIN'"
+									ng-click="approveBlog(blog.blogId)">
+									<i class="glyphicon glyphicon-ok">Approve</i>
+								</button>
+								<button class="btn" ng-show="currentUser.role=='ROLE_ADMIN'"
+									ng-click="rejectBlog(blog.blogId)">
+									<i class="glyphicon glyphicon-remove">Reject</i>
+								</button>
+							</td>
+
+						</tr>
+					</tbody>
+				</table>
+			</form>
+			<!-- 	<div class="jumbotron">
+				<h2></h2>
+			</div> -->
+		</div>
+	</font>
+</body>
+</html>

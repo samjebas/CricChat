@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>UpdateProfile</title>
+<style>
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	color: #222;
+	font-family: COTILLIO, sans-serif;
+	font-weight: 300;
+}
+
+#pro-box {
+	position: relative;
+	margin: 3% auto;
+	width: 500px;
+	height: 500px;
+	border-radius: 2px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+</style>
+</head>
+<body>
+
+	<div>
+		<font color="white" face="Edwardian Script ITC">
+			<h1 class="text-center">Update Profile</h1>
+		</font>
+	</div>
+	<font color="white" face="san serif ms">
+		<div id="pro-box" class="container-fluid"
+			ng-controller="UserController">
+			<br> <br> <br> <br>
+			<div class="row">
+				<div class="col-md-12">
+					<form enctype="multipart/form-data" method="post"
+						action="http://localhost:8078/socialchatmiddle/doUpload">
+						<div class="form-group">
+							<div class="row">
+								<label for="profilePicture"> Choose Profile Picture </label> <input
+									type="file" placeholder="Select picture" class="form-control"
+									name="file" id="image">
+							</div>
+							<br> <br>
+							<button style="font-size: 15px" type="submit"
+							onclick=""window.location.href='ViewProfile.html'"	class="btn btn-primary">Upload Profile Picture</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</font>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/scripts.js"></script>
+	<script src="/UserController.js"></script>
+
+</body>
+</html>

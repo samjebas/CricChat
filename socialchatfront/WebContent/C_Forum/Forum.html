@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Forum</title>
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+	rel="stylesheet">
+<script src="../js/MyRouteConfig.js"></script>
+<style>
+.btn {
+	background-color: DodgerBlue;
+	border: none;
+	color: white;
+	padding: 12px 16px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+	background-color: Black;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	color: #222;
+	font-family: COTILLIO, sans-serif;
+	font-weight: 300;
+}
+
+#forum-box {
+	position: relative;
+	margin: 5% auto;
+	width: 800px;
+	height: 900px;
+	border-radius: 2px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+</style>
+</head>
+<body ng-app="myApp">
+
+	<font color="white" face="verdana">
+		<div id="forum-box" class="container-fluid"
+			ng-controller="ForumController">
+			<div class="row">
+				<div class="col-md-12">
+					<div>
+						<h1 align="center">
+							<font face="Edwardian Script ITC">Create your forums here!</font>
+							</h2>
+					</div>
+
+					<form role="form" mthod="post">
+						<div class="form-group">
+							<label for="forumName"> Forum Name </label> <input type="text"
+								placeholder="Forum Name" name="forumName"
+								ng-model="forum.forumName" class="form-control input-lg"
+								id="forumName">
+						</div>
+						<div class="form-group">
+
+							<label for="forumContent"> Forum Content </label>
+							<textarea rows="6" cols="24" class="form-control input-lg"
+								id="forumContent" placeholder="Forum Content"
+								name="forumContent" ng-model="forum.forumContent"></textarea>
+
+						</div>
+						<button type="submit" class="btn btn-primary" value="Insert Forum"
+							ng-Click="insertForum()">Submit</button>
+					</form>
+					<form id="forumform" method="post">
+
+
+						<h3>List of Created Forums</h3>
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>ForumId</th>
+									<th>ForumName</th>
+									<th>ForumContent</th>
+									<!-- <th>Created Date</th> -->
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="forum in forumData">
+									<td>{{forum.forumId}}</td>
+									<td>{{forum.forumName}}</td>
+									<td>{{forum.forumContent}}</td>
+									<td>{{forum.status}}</td>
+									<!-- 	<td>{{forum.createDate}}  </td> -->
+								</tr>
+							</tbody>
+						</table>
+					</form>
+					<!-- <div class="jumbotron">
+						<h2></h2>
+					</div> -->
+				</div>
+			</div>
+		</div>
+	</font>
+	<script src="../js/jquery.min.js"></script>
+	<script src="/ForumController.js"></script>
+	<script src="../C_User/UserController.js"></script>
+	<script
+		src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-cookies.js"></script>
+</body>
+</html>

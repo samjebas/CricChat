@@ -1,0 +1,40 @@
+
+<div class="container" ng-controller="ForumController"
+	class="table-responsive" data-ng-init="fetchAllForums()">
+
+	<br /> <font color="white" face="san serif ms">
+		<h1 align="center">List of All Forums</h1> <br />
+
+	</font> <font color="#0000A0" face="san serif ms">
+
+		<div class="list-group">
+
+			<div class="list-group-item" ng-repeat="forum in forumData">
+
+				<h3 class="list-group-item-heading" style="color: #0000A0">
+
+					{{forum.forumName}}</h3>
+
+				<p class="list-group-item-text">{{forum.forumContent}}</p>
+				<div align="right">
+					<button class="btn btn-info" ng-click="editForum(forum.forumId)">
+						<i class="fa fa-edit"></i>
+					</button>
+					<button class="btn"  ng-show="currentUser.role=='ROLE_ADMIN'" ng-click="deleteForum(forum.forumId)">
+						<i class="fa fa-trash"></i>
+					</button>
+				</div>
+
+				<br /> <i class="fa fa-calendar"></i> <span style="color: #0000FF">Created
+					On : </span>{{forum.createDate| date:"dd/MM/yyyy"}} <br /> <br />
+
+				<button class="btn btn-right" ng-click="viewForum(forum.forumId)">
+					View Forum</button>
+
+
+
+			</div>
+
+		</div>
+	</font>
+</div>

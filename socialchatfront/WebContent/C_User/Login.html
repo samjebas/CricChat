@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Login</title>
+
+<!-- <meta name="author" content="CricChatApp">
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="../css/bootstrap.min.css" rel="stylesheet"> -->
+<!-- <link href="../css/style.css" rel="stylesheet"> -->
+
+<style type="text/css">
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+
+*:focus {
+	outline: none;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	color: #222;
+	font-family: COTILLIO, sans-serif;
+	font-weight: 300;
+}
+
+#login-box {
+	position: relative;
+	margin: 5% auto;
+	width: 500px;
+	height: 400px;
+	 background: #E6E6FA; 
+	border-radius: 2px;
+	box-shadow: 0 2px 4px rgba(255, 0, 0, 0.4);
+}
+
+.left {
+	position: absolute;
+	top: 0;
+	left: 0;
+	box-sizing: border-box;
+	padding: 40px;
+	width: 500px;
+	height: 600px;
+}
+
+h1 {
+	margin: 0 0 20px 0;
+	font-weight: 300;
+	font-size: 28px;
+}
+
+input[type="text"], input[type="password"] {
+	display: block;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+	padding: 4px;
+	width: 320px;
+	height: 32px;
+	border: 2px solid #16a085;
+	border-bottom: 1px solid #AAA;
+	font-family: COTILLIO, sans-serif ms;
+	font-weight: 400;
+	font-size: 15px;
+	transition: 0.2s ease;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+	border-bottom: 2px solid #16a085;
+	color: #16a085;
+	transition: 0.2s ease;
+}
+
+input[type="submit"] {
+	margin-top: 28px;
+	width: 120px;
+	height: 32px;
+	background: #16a085;
+	border: none;
+	border-radius: 2px;
+	color: #FFF;
+	font-family: 'COTILLIO', sans-serif;
+	font-weight: 500;
+	text-transform: uppercase;
+	transition: 0.1s ease;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover, input[type="submit"]:focus {
+	opacity: 0.8;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+	transition: 0.1s ease;
+}
+
+input[type="submit"]:active {
+	opacity: 1;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+	transition: 0.1s ease;
+}
+</style>
+</head>
+<body>
+	<div id="login-box">
+		<div class="left">
+			<font color="#708090" face="verdana">
+				<h1 align="center">
+					<b>LogIn</b>
+				</h1>
+
+				<div class="container-fluid" ng-controller="UserController">
+					<div class="row">
+						<div class="col-md-12">
+							<form role="form">
+								<div class="form-group">
+
+									<label for="loginName"> User Name </label> <input
+										type="text" autocomplete="userName" ng-model="user.loginName"
+										class="form-control" id="loginName">
+								</div>
+								<div class="form-group">
+
+									<label for="password"> Password </label> <input type="password"
+										autocomplete="current-password" ng-model="user.password"
+										class="form-control" id="password">
+								</div>
+
+								<button type="submit" class="btn btn-primary" value="login"
+									ng-click="login()">Submit</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</font>
+		</div>
+	</div>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/scripts.js"></script>
+	<script src="/UserController.js"></script>
+</body>
+</html>

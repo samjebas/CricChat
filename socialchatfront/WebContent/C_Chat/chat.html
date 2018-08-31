@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>CricChat</title>
+<style>
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	color: #222;
+	font-family: COTILLIO, sans-serif;
+	font-weight: 300;
+}
+
+#chat-box {
+	position: relative;
+	margin: 5% auto;
+	width: 600px;
+	height: 400px;
+	border-radius: 2px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+</style>
+</head>
+<body>
+	<div id="chat-box" ng-controller="ChatController">
+		<form ng-submit="addMessage()" name="chatMsg">
+			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-sm-9 form-group">
+						<label align="center">Message <input type="text"
+							class="form-control" placeholder="Enter message here"
+							ng-model="message"></label> Maximum Text length <span classs="count"
+							ng-bind="max - message.length"> 140 </span>
+
+						<button class="btn btn-primary"
+							ng-disabled="message.length>140||message.length==0">Send</button>
+
+					</div>
+				</div>
+			</div>
+		</form>
+
+
+		<div class="jumbotron">
+			<p ng-repeat="message in messages" color="lightblue">
+				<span> <img
+					src="http://localhost:8078/socialchatmiddle/getImage/{{currentUser.loginName}}"
+					width="20" height=20 " onerror=this.src="avatar.png" style="height: 50px; width: 60px"/> <font
+					color="black" face="Comic Sans MS"> {{message.message}} </font>
+
+				</span>
+			</p>
+		</div>
+
+	</div>
+</body>
+</html>
