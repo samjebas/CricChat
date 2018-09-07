@@ -51,7 +51,7 @@ public class UserDetailController {
 public ResponseEntity<UserDetail> registerUser(@RequestBody UserDetail user){
 	
 	user.setIsOnline("N");
-	user.setLoginName("Samraj");
+	/*user.setLoginName("Samraj");*/
 	user.setRole("ROLE_USER");
 	if (userDAO.registerUser(user)) {
 		return new ResponseEntity<UserDetail>(user, HttpStatus.OK);

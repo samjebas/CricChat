@@ -37,7 +37,7 @@ myApp.controller("UserController", function($scope, $http, $location,
 
 	$scope.register = function() {
 		console.log('Entered into the Register User method');
-		$http.post("http://localhost:8078/socialchatmiddle/registerUser",
+		$http.post("http://localhost:8078/socialchatmiddle/register",
 				$scope.user).then(function(response) {
 			console.log('Status text:' + response.statusText);
 			alert('Registered successfully..!!');

@@ -22,6 +22,9 @@ myApp.controller("JobController", function($scope,$route, $http, $location,$root
 		}
 	$scope.jobData;
 	$rootScope.message="Job added successfully";
+	$rootScope.applyJobData;
+	$rootScope.currentUser;
+	$rootScope.jobInfo;
 
 	$scope.insertJob = function() {
 		console.log('Entered into the insertJob method');
@@ -119,6 +122,20 @@ myApp.controller("JobController", function($scope,$route, $http, $location,$root
 			$location.path("/Job");
 		});
 	};
+	$scope.applyJobs=function()
+	{
+		console.log('Applying for jobs');
+		$scope.applyJob.loginName=$rootScope.currentUser.loginName;
+		$scope.applyJob.jobId=$rootScope.jobInfo.jobId;
+		$scope.applyJob.company=$rootScope.jobInfo.company;
+		$scope.applyJob.jobDesignation=$rootScope.jobInfo.jobDesignation;
+		$http.post('http://localhost:8078/socialchatmiddle/applyJob',$scope.applyJob)
+		.then(function(response)
+		{
+			console.log('Successful');
+			$location.path('/ViewJobs');	
+		});
+	}
 	$scope.incrementLike = function(jobId) {
 		console.log('Into like increment');
 		$http.post(

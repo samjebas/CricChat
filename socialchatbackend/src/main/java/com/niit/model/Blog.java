@@ -15,34 +15,26 @@ import org.springframework.stereotype.Component;
 @Component
 @Entity
 @Table
-@SequenceGenerator(name = "blogidseq", sequenceName="blog_id_seq", allocationSize = 1)
+@SequenceGenerator(name = "blogidseq", sequenceName = "blog_id_seq", allocationSize = 1)
 public class Blog {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "blogidseq")
-	
-	@Column(name ="blogId")
+
 	private int blogId;
-	
-	@Column(name ="blogName")
+
 	private String blogName;
-	
-	@Column(name ="blogContent")
+
 	private String blogContent;
-	
-	@Column(name ="createdDate")
+
 	private Date createdDate;
-	
-	@Column(name ="loginName")
+
 	private String loginName;
-	
-	@Column(name ="likes")
+
 	private int likes;
-	
-	@Column(name ="dislikes")
+
 	private int dislikes;
-	
-	@Column(name ="status")
+
 	private String status;
 
 	public int getBlogId() {
@@ -69,7 +61,6 @@ public class Blog {
 		this.blogContent = blogContent;
 	}
 
-	
 	public String getLoginName() {
 		return loginName;
 	}
