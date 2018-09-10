@@ -26,23 +26,17 @@ public class ProfileUpdateDAOimpl implements ProfileUpdateDAO {
 		
 	}
 
-	@Override
+	
 	@Transactional
-	public void save(Profile profilePicture) {
-		System.out.println("Profile Loginname : " + profilePicture.getLoginName());
-		Session session = sessionfactory.openSession();
-		session.saveOrUpdate(profilePicture);
-
-		session.close();
-		
+	public void saveProfilePic(Profile profilePicture)
+	{
+		sessionfactory.getCurrentSession().save(profilePicture);		
 	}
 
-	@Override
 	@Transactional
 	public Profile getProfilePicture(String loginName) {
 		Session session = sessionfactory.openSession();
 		Profile profilePicture = (Profile) session.get(Profile.class, loginName);
-		session.close();
 		return profilePicture;
 		
 	

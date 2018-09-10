@@ -6,7 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -16,10 +19,14 @@ import org.springframework.stereotype.Component;
 public class UserDetail {
 
 	@Id
-	
+	@Pattern(regexp="[^0-9]*",message="loginName should not contain any numbers")
+	@Size(min=3,message="Login Name must be atleast 3 character")
 	private String loginName;
+	
+    @Size(min=3,message="Password should contain atleat 3 character")
 	private String password;
 	private String userName;
+	@Email
 	private String emailId;
 	private String mobileNo;
 	private String address;

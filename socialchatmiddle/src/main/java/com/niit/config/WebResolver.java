@@ -16,24 +16,21 @@ import org.springframework.web.servlet.view.JstlView;
 public class WebResolver {
 
 	@Bean(name = "HelloWorld")
-	public ViewResolver viewResolver() {
-		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-		viewResolver.setViewClass(JstlView.class);
-		viewResolver.setPrefix("/WEB-INF/views/");
+	public InternalResourceViewResolver getViewResolver()
+	{
+		InternalResourceViewResolver viewResolver=new InternalResourceViewResolver();
+		viewResolver.setPrefix("/WEB-INF/jsp/");
 		viewResolver.setSuffix(".jsp");
-
 		return viewResolver;
 	}
 
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/resources/**").addResourceLocations("/WEB-INF/resources/");
+	
 
-	}
-
-	@Bean(name = "multipartResolver")
-	public CommonsMultipartResolver getMultipartResolver() {
-		CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
-		commonsMultipartResolver.setMaxUploadSize(1000000000);
-		return commonsMultipartResolver;
+	@Bean(name="multipartResolver")
+	public CommonsMultipartResolver getmultipartResolver() 
+	{
+	    CommonsMultipartResolver multipartResolver=new CommonsMultipartResolver();
+	    multipartResolver.setDefaultEncoding("utf-8");
+	    return multipartResolver;
 	}
 }

@@ -18,7 +18,6 @@ import com.niit.dao.FriendDAO;
 import com.niit.model.Friend;
 import com.niit.model.UserDetail;
 
-
 @Service
 @Repository("friendDAO")
 public class FriendDAOimpl implements FriendDAO {
@@ -31,7 +30,7 @@ public class FriendDAOimpl implements FriendDAO {
 
 		try {
 			System.out.println("Into Send Friend REquest");
-			friend.setStatus("SFR");
+			friend.setStatus("P");
 			sessionfactory.getCurrentSession().save(friend);
 			return true;
 		} catch (Exception e) {
@@ -42,22 +41,15 @@ public class FriendDAOimpl implements FriendDAO {
 
 	}
 
-	
 	@Transactional
 	public boolean deleteFriendRequest(int friendId) {
 		System.out.println("Into Deleting FriendRequest");
 		try {
 			Session session = sessionfactory.openSession();
 			Friend friend = (Friend) session.get(Friend.class, friendId);
-
-			if (friend.getStatus() == "SFR") {
-				sessionfactory.getCurrentSession().delete(friend);
-				session.close();
-				System.out.println("Deleted Friend Request is:" + friendId);
-			} else {
-
-				System.out.println("Friend Request is already Accepted");
-			}
+            sessionfactory.getCurrentSession().delete(friend);
+			session.close();
+			System.out.println("Deleted Friend Request is:" + friendId);
 
 			return true;
 		} catch (Exception e) {
@@ -67,7 +59,6 @@ public class FriendDAOimpl implements FriendDAO {
 		}
 	}
 
-	
 	@Transactional
 	public boolean acceptFriendRequest(int friendId) {
 		try {
@@ -92,37 +83,36 @@ public class FriendDAOimpl implements FriendDAO {
 			sessionfactory.getCurrentSession().update(friend);
 			return true;
 		} catch (HibernateException e) {
-			
+
 			e.printStackTrace();
 			return false;
 		}
 	}
-	
 
 	@SuppressWarnings({ "rawtypes", "unchecked", "deprecation" })
 	@Transactional
 	public List<UserDetail> showSuggestedFriend(String loginName) {
-	Session session = sessionfactory.openSession();
-	@SuppressWarnings("deprecation")
-	SQLQuery query = session.createSQLQuery(
-			"select loginName from userdetail where loginName not in (select friendloginname from Friend where loginName='"
-					+ loginName + "')and loginName!='" + loginName + "'");
-	List<Object> suggestedFriendName = (List<Object>) query.list();
-	List<UserDetail> suggestFriendList = new ArrayList<UserDetail>();
-	int i = 0;
-	while (i < suggestedFriendName.size()) {
-		UserDetail userDetail = session.get(UserDetail.class, (String) suggestedFriendName.get(i));
-		suggestFriendList.add(userDetail);
-		i++;
+		Session session = sessionfactory.openSession();
+		@SuppressWarnings("deprecation")
+		SQLQuery query = session.createSQLQuery(
+				"select loginName from userdetail where loginName not in (select friendloginname from Friend where loginName='"
+						+ loginName + "')and loginName!='" + loginName + "'");
+		List<Object> suggestedFriendName = (List<Object>) query.list();
+		List<UserDetail> suggestFriendList = new ArrayList<UserDetail>();
+		int i = 0;
+		while (i < suggestedFriendName.size()) {
+			UserDetail userDetail = session.get(UserDetail.class, (String) suggestedFriendName.get(i));
+			suggestFriendList.add(userDetail);
+			i++;
 		}
-	return suggestFriendList;
-		
+		return suggestFriendList;
+
 	}
 
 	@SuppressWarnings("deprecation")
 	@Transactional
 	public List<Friend> showAllFriends(String loginName) {
-	
+
 		Session session = sessionfactory.openSession();
 		@SuppressWarnings("rawtypes")
 		Query query = session.createQuery("from Friend where loginName = :currentuser and status='A'");
@@ -135,7 +125,7 @@ public class FriendDAOimpl implements FriendDAO {
 	@SuppressWarnings({ "deprecation", "unchecked", "rawtypes" })
 	@Transactional
 	public List<Friend> showPendingFriendRequest(String loginName) {
-		
+
 		Session session = sessionfactory.openSession();
 		Query query = session.createQuery("from Friend where loginName =:currentuser and status='P'");
 		query.setParameter("currentuser", loginName);

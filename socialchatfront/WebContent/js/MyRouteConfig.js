@@ -54,6 +54,8 @@ myApp.config(function($routeProvider) {
 		templateUrl : "C_Job/AppliedJobs.html"
 	}).when("/SingleJob", {
 		templateUrl : "C_Job/SingleJob.html"
+	}).when("/updateJob", {
+		templateUrl : "C_Job/updateJob.html"
 	});
 });
 

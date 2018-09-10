@@ -24,6 +24,8 @@ public class ApplyJob {
 	private int appliationId;
 	private String loginName;
 	private Date appliedDate;
+	private String company;
+	private String jobDesignation;
 	
 	
 	
@@ -50,6 +52,19 @@ public class ApplyJob {
 	}
 	public void setAppliedDate(Date appliedDate) {
 		this.appliedDate = appliedDate;
+	}
+	public String getCompany() {
+		return company;
+	}
+	public void setCompany(String company) {
+		this.company = company;
+	}
+
+	public String getJobDesignation() {
+		return jobDesignation;
+	}
+	public void setJobDesignation(String jobDesignation) {
+		this.jobDesignation = jobDesignation;
 	}
 	
 

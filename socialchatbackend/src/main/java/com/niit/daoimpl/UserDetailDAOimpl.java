@@ -41,23 +41,15 @@ public class UserDetailDAOimpl implements UserDetailDAO {
 
 	@Transactional
 	@SuppressWarnings("deprecation")
-	public boolean checkLogin(UserDetail userDetail) {
-
-		try {
-			Session session = sessionfactory.openSession();
-			Query query = session.createQuery("from UserDetail where loginName=:loginName and password=:password");
-			query.setParameter("loginName", userDetail.getLoginName());
-			query.setParameter("password", userDetail.getPassword());
-			UserDetail userDetails = (UserDetail) query.list().get(0);
-			session.close();
-			if (userDetails == null) {
-				return false;
-			} else {
-				return true;
-			}
-		} catch (Exception e) {
-			return false;
-		}
+	public UserDetail checkUser(UserDetail userDetail)
+	{
+		Session session=sessionfactory.openSession();
+		Query query=session.createQuery("from UserDetail where loginname=:loginName and password=:password");
+		query.setParameter("loginName",userDetail.getLoginName());
+		query.setParameter("password",userDetail.getPassword());
+		List<UserDetail> listUserDetail=query.list();
+		UserDetail userDetail1=listUserDetail.get(0);
+		return userDetail1;
 	}
 
 	@Transactional

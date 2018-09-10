@@ -1,6 +1,3 @@
-/**
- * 
- */
 myApp.controller("JobController", function($scope,$route, $http, $location,$rootScope, $window) {
 	$scope.job = {
 			"jobId":0,
@@ -20,11 +17,11 @@ myApp.controller("JobController", function($scope,$route, $http, $location,$root
 			"jobDescription" : '',
 			"lastDateToApply" : ''
 		}
+	$scope.applyJob={'applicationId':'0','company':'','jobDesignation':'','appliedDate':'','jobId':'','loginName':''}
 	$scope.jobData;
+	$rootScope.listApplyJob
+	$rootScope.singleJobData;
 	$rootScope.message="Job added successfully";
-	$rootScope.applyJobData;
-	$rootScope.currentUser;
-	$rootScope.jobInfo;
 
 	$scope.insertJob = function() {
 		console.log('Entered into the insertJob method');
@@ -60,7 +57,39 @@ myApp.controller("JobController", function($scope,$route, $http, $location,$root
 					$location.path('/SingleJob');					
 				});
 	};
+	/*
+	 * $rootScope.applyJobClicked=function(job) {
+	 * $http.get('http://localhost:8078/socialchatmiddle/getJob/'+job.jobId)
+	 * .then(function(response) { $rootScope.jobInfo=job;
+	 * $rootScope.applyJobData=response.data; $location.path('/applyJobs'); });
+	 *  }
+	 */
+	$scope.applyJobs=function()
+	{
+		console.log('Applying for jobs');
+		$scope.applyJob.loginName=$rootScope.currentUser.loginName;
 
+		$scope.applyJob.jobId=$rootScope.singleJobData.jobId;
+		$scope.applyJob.company=$rootScope.singleJobData.company;
+		$scope.applyJob.jobDesignation=$rootScope.singleJobData.jobDesignation;
+		
+		$http.post('http://localhost:8078/socialchatmiddle/applyJob',$scope.applyJob).then(function(response)
+				{
+			 	
+				console.log('Successful');
+				$location.path('/Job');
+			});
+	}
+	function listApplyJob()
+	{
+		console.log("Applied jobs displaying");
+		$http.get('http://localhost:8078/socialchatmiddle/listAppliedJobs')
+		.then(function(response)
+				{
+					$rootScope.listApplyJob = response.data;
+					console.log(response.data);
+				});
+	}
 	$scope.editJob = function(jobId) {
 		console.log('Entered into the editJob method');
 		$http.get('http://localhost:8078/socialchatmiddle/getJob/' + jobId)
@@ -122,20 +151,6 @@ myApp.controller("JobController", function($scope,$route, $http, $location,$root
 			$location.path("/Job");
 		});
 	};
-	$scope.applyJobs=function()
-	{
-		console.log('Applying for jobs');
-		$scope.applyJob.loginName=$rootScope.currentUser.loginName;
-		$scope.applyJob.jobId=$rootScope.jobInfo.jobId;
-		$scope.applyJob.company=$rootScope.jobInfo.company;
-		$scope.applyJob.jobDesignation=$rootScope.jobInfo.jobDesignation;
-		$http.post('http://localhost:8078/socialchatmiddle/applyJob',$scope.applyJob)
-		.then(function(response)
-		{
-			console.log('Successful');
-			$location.path('/ViewJobs');	
-		});
-	}
 	$scope.incrementLike = function(jobId) {
 		console.log('Into like increment');
 		$http.post(
@@ -171,4 +186,5 @@ myApp.controller("JobController", function($scope,$route, $http, $location,$root
 				});
 	};
 		fetchAllJobs();
+		listApplyJob();
 });

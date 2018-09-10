@@ -47,13 +47,6 @@ public class UserDAOTest {
 		System.out.println("<============Updated the online status============>");
 	}
 	//@Ignore
-	@Test
-	public void checkUserTest(){
-		UserDetail userDetail=new UserDetail();
-		userDetail.setLoginName("Sam");
-		userDetail.setPassword("sam");
-		assertTrue("Check user failed",userDetailDAO.checkLogin(userDetail));
-		System.out.println("<=================Checked user successfully=============>");
-	}
+	
 	
 }
