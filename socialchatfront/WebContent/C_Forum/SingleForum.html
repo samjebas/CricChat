@@ -18,13 +18,14 @@
 					<button class="btn btn-info" ng-click="editForum(forum1.forumId)">
 						<i class="fa fa-edit"></i>
 					</button>
-					<button class="btn" ng-show="currentUser.role=='ROLE_ADMIN'" ng-click="deleteForum(forum1.forumId)">
+					<button class="btn" ng-show="currentUser.role=='ROLE_ADMIN'"
+						ng-click="deleteForum(forum1.forumId)">
 						<i class="fa fa-trash"></i>
 					</button>
 
 				</div>
-				<br /> <span style="color: #0000FF">Created On : </span>{{singleForumData.createDate | date:"dd MM yyyy"}}
-				<br />
+				<br /> <span style="color: #0000FF">Created On : </span>{{singleForumData.createDate
+				| date:"dd MM yyyy"}} <br />
 
 			</div>
 
@@ -41,8 +42,8 @@
 				<form role="form" method="post">
 					<textarea ng-model="forumComment.commentText" rows="5"
 						class="form-control" required="true"></textarea>
-					<br /> <input type="hidden" ng-model="singleForumData.forumId" /> <a
-						ng-click="addForumComment(singleForumData.forumId)"
+					<br /> <input type="hidden" ng-model="singleForumData.forumId" />
+					<a ng-click="addForumComment(singleForumData.forumId)"
 						class="btn btn-success myBoldFont pull-right"><input
 						ng-show="currentUser.loginName" type="submit" value="Post Comment"
 						class="btn btn-success myBoldFont pull-right" /></a> <br />
@@ -56,7 +57,8 @@
 					style="padding: 10px;">
 					<td style="font-family:" Helvetica Neue"; color: white;colspan="2"><span
 						style="font-size: 22px; font-weight: 900">{{comment.loginName}}
-					</span><br /> <span style="font-size: 12px; color: white;font-weight: 900">{{comment.commentDate
+					</span><br /> <span
+						style="font-size: 12px; color: white; font-weight: 900">{{comment.commentDate
 							| date:"dd MM yyyy"}}</span><br /> <span
 						style="font-size: 17px; color: white; font-family: Footlight MT Light; font-weight: 500">{{comment.commentText}}</span></td>
 				</tr>

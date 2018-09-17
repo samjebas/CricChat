@@ -31,8 +31,8 @@ body {
 					<div class="col-sm-9 form-group">
 						<label align="center">Message <input type="text"
 							class="form-control" placeholder="Enter message here"
-							ng-model="message"></label> Maximum Text length <span classs="count"
-							ng-bind="max - message.length"> 140 </span>
+							ng-model="message"></label> Maximum Text length <span
+							classs="count" ng-bind="max - message.length"> 140 </span>
 
 						<button class="btn btn-primary"
 							ng-disabled="message.length>140||message.length==0">Send</button>
@@ -47,7 +47,8 @@ body {
 			<p ng-repeat="message in messages" color="lightblue">
 				<span> <img
 					src="http://localhost:8078/socialchatmiddle/getImage/{{currentUser.loginName}}"
-					width="20" height=20 " onerror=this.src="avatar.png" style="height: 50px; width: 60px"/> <font
+					width="20" height=20 " onerror=this.src=
+					"avatar.png" style="height: 50px; width: 60px" /> <font
 					color="black" face="Comic Sans MS"> {{message.message}} </font>
 
 				</span>

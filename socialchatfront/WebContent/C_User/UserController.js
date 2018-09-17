@@ -94,6 +94,6 @@ myApp.controller("UserController", function($scope, $http, $location,
 		alert("Logged Out Successfully")
 		$location.path("/");
 		$rootScope.currentUser = undefined;
-		$window.location.reload();
+		$location.reload();
 }
 });

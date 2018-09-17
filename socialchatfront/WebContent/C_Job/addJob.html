@@ -63,16 +63,17 @@ body {
 								class="form-control input-lg" id="jobName">
 						</div>
 						<div class="form-group">
-							<label for="jobDesignation"> Designation </label> <input type="text"
-								placeholder="Job Designation" name="designation" ng-model="job.jobDesignation"
-								class="form-control input-lg" id="jobName">
+							<label for="jobDesignation"> Designation </label> <input
+								type="text" placeholder="Job Designation" name="designation"
+								ng-model="job.jobDesignation" class="form-control input-lg"
+								id="jobName">
 						</div>
 						<div class="form-group">
 
 							<label for="jobContent"> Job Description </label>
 							<textarea rows="6" cols="24" class="form-control input-lg"
-								id="jobDescription" placeholder="Job Description" name="jobDescription"
-								ng-model="job.jobDescription"></textarea>
+								id="jobDescription" placeholder="Job Description"
+								name="jobDescription" ng-model="job.jobDescription"></textarea>
 
 						</div>
 						<div class="form-group">
@@ -105,14 +106,14 @@ body {
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="job in jobData" >
+								<tr ng-repeat="job in jobData">
 									<td>{{job.jobId}}</td>
 									<td>{{job.company}}</td>
 									<td>{{job.jobDesignation}}</td>
-									<td>{{job.jobDescription}}</td>									
+									<td>{{job.jobDescription}}</td>
 									<td>{{job.location}}</td>
 									<td>{{job.salary}}</td>
-									
+
 								</tr>
 							</tbody>
 						</table>

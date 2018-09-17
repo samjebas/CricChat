@@ -221,31 +221,33 @@ body {
 									<li><a href="#!ShowFriendList">Friends</a></li>
 									<li><a href="#!suggestedFriends"><i
 											class="glyphicon glyphicon-user"></i>Suggested Friends</a></li>
-									<li><a href="#!ShowPendingFriendRequestList">Pending Friend
-											Requests</a></li>
+									<li><a href="#!ShowPendingFriendRequestList">Pending
+											Friend Requests</a></li>
 								</ul></li>
 							<!-- Friend END -->
-							
+
 							<!-- Jobs -->
 							<li class="dropdown"
 								ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'"><a
 								class="dropdown-toggle" data-toggle="dropdown" href="">Jobs<span
 									class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li ng-show="currentUser.role=='ROLE_ADMIN'"><a href="#!Job">Create new job opportunity</a></li>
+									<li ng-show="currentUser.role=='ROLE_ADMIN'"><a
+										href="#!Job">Create new job opportunity</a></li>
 									<li><a href="#!ViewJobs">View Jobs</a></li>
 									<li><a href="#!AppliedJobs">Applied Jobs</a></li>
-									
+
 								</ul></li>
 							<!-- Blogs END -->
-							
+
 							<!-- Profile dropdown -->
 							<li class="dropdown"
 								ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'">
 								<a class="dropdown-toggle" data-toggle="dropdown" href=""><i
 									class="glyphicon glyphicon-user"></i>Profile</a>
 								<ul class="dropdown-menu">
-								<li	ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'">
+									<li
+										ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'">
 										<a href="#!UpdateProfileDetails"><i
 											class="glyphicon glyphicon-user"></i>Update Profile details</a>
 
@@ -303,7 +305,8 @@ body {
 									</ul></li>
 								<li><img id="img1"
 									src="http://localhost:8078/socialchatmiddle/getImage/{{currentUser.loginName}}"
-									alt="avatar" onerror=this.src="avatar.png" style="height: 50px; width: 60px"></li>
+									alt="avatar" onerror=this.src=
+									"avatar.png" style="height: 50px; width: 60px"></li>
 
 							</ul>
 						</div>

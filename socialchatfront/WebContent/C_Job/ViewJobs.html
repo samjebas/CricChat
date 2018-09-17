@@ -20,12 +20,13 @@
 					<button class="btn btn-info" ng-click="editJob(job.jobId)">
 						<i class="fa fa-edit"></i>
 					</button>
-					<button class="btn"  ng-show="currentUser.role=='ROLE_ADMIN'" ng-click="deleteJob(job.jobId)">
+					<button class="btn" ng-show="currentUser.role=='ROLE_ADMIN'"
+						ng-click="deleteJob(job.jobId)">
 						<i class="fa fa-trash"></i>
 					</button>
 				</div>
 
-				
+
 
 				<button class="btn btn-right" ng-click="viewJob(job.jobId)">
 					View Job</button>
