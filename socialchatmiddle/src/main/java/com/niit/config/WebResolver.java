@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages = "com.niit")
 public class WebResolver {
 
-	@Bean(name = "HelloWorld")
+	@Bean
 	public InternalResourceViewResolver getViewResolver()
 	{
 		InternalResourceViewResolver viewResolver=new InternalResourceViewResolver();
@@ -23,9 +23,7 @@ public class WebResolver {
 		viewResolver.setSuffix(".jsp");
 		return viewResolver;
 	}
-
 	
-
 	@Bean(name="multipartResolver")
 	public CommonsMultipartResolver getmultipartResolver() 
 	{

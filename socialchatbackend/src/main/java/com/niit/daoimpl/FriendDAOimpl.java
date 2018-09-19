@@ -30,7 +30,7 @@ public class FriendDAOimpl implements FriendDAO {
 
 		try {
 			System.out.println("Into Send Friend REquest");
-			friend.setStatus("P");
+			
 			sessionfactory.getCurrentSession().save(friend);
 			return true;
 		} catch (Exception e) {
@@ -107,30 +107,30 @@ public class FriendDAOimpl implements FriendDAO {
 		}
 		return suggestFriendList;
 
+
 	}
 
 	@SuppressWarnings("deprecation")
 	@Transactional
 	public List<Friend> showAllFriends(String loginName) {
 
-		Session session = sessionfactory.openSession();
-		@SuppressWarnings("rawtypes")
-		Query query = session.createQuery("from Friend where loginName = :currentuser and status='A'");
-		query.setParameter("currentuser", loginName);
-		@SuppressWarnings("unchecked")
-		List<Friend> listFriends = (List<Friend>) query.list();
-		return listFriends;
+		Session session=sessionfactory.openSession();
+		Query query1=session.createQuery("from Friend where (friendloginname=:flogin or loginName=:mylogin) and status='A'");
+		query1.setParameter("flogin",loginName);
+		query1.setParameter("mylogin",loginName);
+		List<Friend> friendList=(List<Friend>)query1.list();
+		return friendList;
 	}
 
 	@SuppressWarnings({ "deprecation", "unchecked", "rawtypes" })
 	@Transactional
 	public List<Friend> showPendingFriendRequest(String loginName) {
 
-		Session session = sessionfactory.openSession();
-		Query query = session.createQuery("from Friend where loginName =:currentuser and status='P'");
-		query.setParameter("currentuser", loginName);
-		List<Friend> listFriends = (List<Friend>) query.list();
-		return listFriends;
+		Session session=sessionfactory.openSession();
+		Query query=session.createQuery("from Friend where friendloginname=:flogin and status='NA'");
+		query.setParameter("flogin",loginName);
+		List<Friend> pendingFriendRequest=query.list();
+		return pendingFriendRequest;
 	}
 
 }

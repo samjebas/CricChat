@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.niit.dao.UserDetailDAO;
 import com.niit.model.UserDetail;
 
@@ -48,10 +47,11 @@ public class UserDetailController {
 	// ---------------------RegisterUser----------------------------------//
 	@PostMapping(value = "/register")
 	public ResponseEntity<UserDetail> registerUser(@Valid @RequestBody UserDetail user, Errors errors) {
-if(errors.hasErrors()) {
-	System.out.println("Validation Failure");
-	return new ResponseEntity<UserDetail>(user, HttpStatus.NOT_FOUND);
-}
+		if (errors.hasErrors()) {
+			System.out.println("Validation Failure");
+			return new ResponseEntity<UserDetail>(user, HttpStatus.NOT_FOUND);
+		}
+
 		user.setIsOnline("N");
 		/* user.setLoginName("Samraj"); */
 		user.setRole("ROLE_USER");

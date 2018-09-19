@@ -30,7 +30,7 @@ public class ProfileController {
 	public ResponseEntity<?> uploadPicture(@RequestParam(value="file")CommonsMultipartFile fileupload,HttpSession session)
 	{
 	
-		UserDetail userDetail=(UserDetail)session.getAttribute("userdetail");
+		UserDetail userDetail=(UserDetail)session.getAttribute("userDetail");
 		
 		if(userDetail==null) 
 		{

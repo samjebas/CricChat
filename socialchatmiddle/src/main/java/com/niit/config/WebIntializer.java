@@ -2,48 +2,46 @@ package com.niit.config;
 
 import java.nio.charset.StandardCharsets;
 
+import javax.servlet.Filter;
 import javax.servlet.ServletRegistration;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import com.fasterxml.classmate.Filter;
+
 
 public class WebIntializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
-	@Override
-	protected void customizeRegistration(ServletRegistration.Dynamic registration) {
-		System.out.println("customizeRegistration");
-		registration.setInitParameter("dispatchOptionRequest", "true");
+	protected void Customizeregistration(ServletRegistration.Dynamic registration)
+	{
+		registration.setInitParameter("dispatchOptionsRequest","true");
 		registration.setAsyncSupported(true);
 	}
-	
-	
-	
 	@Override
-	protected Class<?>[] getRootConfigClasses() {
+	protected Class<?>[] getRootConfigClasses() 
+	{
 		
-		return new Class[] { WebResolver.class, HibernateConfig.class };
+		return new Class[] {WebResolver.class,HibernateConfig.class};
 	}
 
 	@Override
-	protected Class<?>[] getServletConfigClasses() {
-		// TODO Auto-generated method stub
+	protected Class<?>[] getServletConfigClasses()
+	{
+		
 		return null;
 	}
 
 	@Override
-	protected String[] getServletMappings() {
+	protected String[] getServletMappings()
+	{
 		
-		return  new String[] { "/" };
+		return new String[] {"/"};
 	}
-
 	
-	@Override
-	protected javax.servlet.Filter[] getServletFilters()
+	protected Filter[] getServletFilter()
 	{
 		CharacterEncodingFilter encodingFilter=new CharacterEncodingFilter();
 		encodingFilter.setEncoding(StandardCharsets.UTF_8.name());
-		return new javax.servlet.Filter[] {encodingFilter};
+		return new Filter[] {encodingFilter};
 	}
 }
